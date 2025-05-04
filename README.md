@@ -1,6 +1,6 @@
-# Strapi plugin timezone-picker
+# Strapi plugin locale-select
 
-A Strapi custom field for selecting any timezone based on the [Luxon](https://moment.github.io/luxon/) timezones.
+A Strapi custom field for selecting any locale based on the [Luxon](https://moment.github.io/luxon/) locales.
 
 ## Installation
 
@@ -8,13 +8,13 @@ To install this plugin, you need to add an NPM dependency to your Strapi applica
 
 ```sh
 # Using yarn
-yarn add strapi-plugin-timezone-picker
+yarn add strapi-plugin-locale-select
 
 # Using npm
-npm install strapi-plugin-timezone-picker
+npm install strapi-plugin-locale-select
 
 # Using pnpm
-pnpm add strapi-plugin-timezone-picker
+pnpm add strapi-plugin-locale-select
 ```
 
 Then, you'll need to build your admin panel:
@@ -32,13 +32,13 @@ pnpm build
 
 ## Usage
 
-After installation you will find the timezone-picker at the custom fields section of the content-type builder.
+After installation you will find the locale-select at the custom fields section of the content-type builder.
 
-![timezone select screenshot](/assets/timezone-picker-custom-field.png)
+![locale select screenshot](/assets/locale-select-custom-field.png)
 
-Now you can select any country from the list. The Alpha-2 code of the selected timezone is stored in the database.
+Now you can select any country from the list. The Alpha-2 code of the selected locale is stored in the database.
 
-![timezone select screenshot](/assets/timezone-picker.png)
+![locale select screenshot](/assets/locale-select.png)
 
 ## Development
 
@@ -48,13 +48,13 @@ This plugin was created using [Strapi 5 plugin SDK](https://docs.strapi.io/dev-d
 
 ```sh
 # Using yarn
-yarn dlx @strapi/sdk-plugin init strapi-plugin-timezone-picker
+yarn dlx @strapi/sdk-plugin init strapi-plugin-locale-select
 
 # Using npm
-npx @strapi/sdk-plugin init strapi-plugin-timezone-picker
+npx @strapi/sdk-plugin init strapi-plugin-locale-select
 
 # Using pnpm
-pnpm dlx @strapi/sdk-plugin init strapi-plugin-timezone-picker
+pnpm dlx @strapi/sdk-plugin init strapi-plugin-locale-select
 ```
 
 ### Start watch mode on the plugin
@@ -62,7 +62,7 @@ pnpm dlx @strapi/sdk-plugin init strapi-plugin-timezone-picker
 To start working on your plugin
 
 - Open a terminal
-- Navigate to your plugin folder `strapi-plugin-timezone-picker`
+- Navigate to your plugin folder `strapi-plugin-locale-select`
 - Run the following command
 
 ```sh
@@ -86,16 +86,16 @@ To link the plugin to your Strapi project
 
 ```sh
 # Using yarn
-yarn dlx yalc add --link strapi-plugin-timezone-picker
+yarn dlx yalc add --link strapi-plugin-locale-select
 yarn install
 
 # Using npm
-npx yalc add strapi-plugin-timezone-picker
-npx yalc link strapi-plugin-timezone-picker
+npx yalc add strapi-plugin-locale-select
+npx yalc link strapi-plugin-locale-select
 npm install
 
 # Using pnpm
-pnpm dlx yalc add --link strapi-plugin-timezone-picker
+pnpm dlx yalc add --link strapi-plugin-locale-select
 pnpm install
 
 ```
