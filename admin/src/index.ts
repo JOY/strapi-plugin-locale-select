@@ -5,7 +5,7 @@ import { PLUGIN_ID } from './pluginId';
 import { Initializer } from './components/Initializer';
 import { PluginIcon } from './components/PluginIcon';
 import TimezoneIcon from './components/TimezoneSelectIcon';   // icon đồng hồ
-import CountryIcon from '@strapi/icons/Flag';                 // icon lá cờ (Strapi design-system)
+import CountryIcon from '@strapi/icons';                 // icon flag (Strapi design-system)
 
 /* -------------------------------------------------------------------------- */
 /*  MAIN                                                                      */
