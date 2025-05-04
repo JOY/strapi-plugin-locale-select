@@ -14,12 +14,15 @@ importers:
       '@strapi/icons':
         specifier: ^2.0.0-rc.18
         version: 2.0.0-rc.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
-      moment-timezone:
-        specifier: ^0.5.47
-        version: 0.5.47
+      luxon:
+        specifier: ^3.6.1
+        version: 3.6.1
       react-intl:
         specifier: ^7.1.6
         version: 7.1.6(react@18.3.1)(typescript@5.8.2)
+      react-timezone-select:
+        specifier: ^3.2.8
+        version: 3.2.8(react-dom@18.3.1(react@18.3.1))(react-select@5.8.0(@types/react@19.0.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@strapi/sdk-plugin':
         specifier: ^5.3.2
@@ -4178,8 +4181,8 @@ packages:
   lunr@2.3.9:
     resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
 
-  luxon@3.5.0:
-    resolution: {integrity: sha512-rh+Zjr6DNfUYR3bPwJEnuwDdqMbxZW7LOQfUN4B54+Cl+0o5zaU9RJ6bcidfDtC1cWCZXQ+nvX8bf6bAji37QQ==}
+  luxon@3.6.1:
+    resolution: {integrity: sha512-tJLxrKJhO2ukZ5z0gyjY1zPh3Rh88Ej9P7jNrZiHMUXHae1yvI2imgOZtL1TO8TW6biMMKfTtAOoEJANgtWBMQ==}
     engines: {node: '>=12'}
 
   lz-string@1.5.0:
@@ -4370,12 +4373,6 @@ packages:
     resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
     engines: {node: '>=10'}
     hasBin: true
-
-  moment-timezone@0.5.47:
-    resolution: {integrity: sha512-UbNt/JAWS0m/NJOebR0QMRHBk0hu03r5dx9GK8Cs0AS3I81yDcOc9k+DytPItgVvBP7J6Mf6U2n3BPAacAV9oA==}
-
-  moment@2.30.1:
-    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
 
   mrmime@2.0.1:
     resolution: {integrity: sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ==}
@@ -5084,6 +5081,13 @@ packages:
       '@types/react':
         optional: true
 
+  react-timezone-select@3.2.8:
+    resolution: {integrity: sha512-efEIVmYAHtm+oS+YlE/9DbieMka1Lop0v1LsW1TdLq0yCBnnAzROKDUY09CICY8TCijZlo0fk+wHZZkV5NpVNw==}
+    peerDependencies:
+      react: ^16 || ^17.0.1 || ^18 || ^19.0.0-0
+      react-dom: ^16 || ^17.0.1 || ^18 || ^19.0.0-0
+      react-select: ^5.8.0
+
   react-transition-group@4.4.5:
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
@@ -5475,6 +5479,9 @@ packages:
     resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
     engines: {node: '>= 8'}
 
+  spacetime@7.10.0:
+    resolution: {integrity: sha512-tanJSLq0/+Qvq1bmK0Nh2Ppk0lFOkGwpes29/64E6hyK4kn5d6LPt65Eidm2Xaf3gLvmG8KaXh8LmeymPlw0Aw==}
+
   spawn-command@0.0.2:
     resolution: {integrity: sha512-zC8zGoGkmc8J9ndvml8Xksr1Amk9qBujgbF0JAIWO7kXr43w0h/0GJNM/Vustixu+YE8N/MTrQ7N31FvHUACxQ==}
 
@@ -5691,6 +5698,9 @@ packages:
   tildify@2.0.0:
     resolution: {integrity: sha512-Cc+OraorugtXNfs50hU9KS369rFXCfgGLpfCfvlc+Ud5u6VWmUQsOAa9HbTvheQdYnrdJqqv1e5oIqXppMYnSw==}
     engines: {node: '>=8'}
+
+  timezone-soft@1.5.2:
+    resolution: {integrity: sha512-BUr+CfBfeWXJwFAuEzPO9uF+v6sy3pL5SKLkDg4vdEhsyXgbBnpFoBCW8oEKSNTqNq9YHbVOjNb31xE7WyGmrA==}
 
   tiny-invariant@1.0.6:
     resolution: {integrity: sha512-FOyLWWVjG+aC0UqG76V53yAWdXfH8bO6FNmyZOuUrzDzK8DI3/JRY25UD7+g49JWM1LXwymsKERB+DzI0dTEQA==}
@@ -9617,7 +9627,7 @@ snapshots:
 
   cron-parser@4.9.0:
     dependencies:
-      luxon: 3.5.0
+      luxon: 3.6.1
 
   cropperjs@1.6.1: {}
 
@@ -11234,7 +11244,7 @@ snapshots:
 
   lunr@2.3.9: {}
 
-  luxon@3.5.0: {}
+  luxon@3.6.1: {}
 
   lz-string@1.5.0: {}
 
@@ -11378,12 +11388,6 @@ snapshots:
   mkdirp@1.0.4: {}
 
   mkdirp@3.0.1: {}
-
-  moment-timezone@0.5.47:
-    dependencies:
-      moment: 2.30.1
-
-  moment@2.30.1: {}
 
   mrmime@2.0.1: {}
 
@@ -12139,6 +12143,14 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.0.10
 
+  react-timezone-select@3.2.8(react-dom@18.3.1(react@18.3.1))(react-select@5.8.0(@types/react@19.0.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-select: 5.8.0(@types/react@19.0.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      spacetime: 7.10.0
+      timezone-soft: 1.5.2
+
   react-transition-group@4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.26.9
@@ -12598,6 +12610,8 @@ snapshots:
 
   source-map@0.7.4: {}
 
+  spacetime@7.10.0: {}
+
   spawn-command@0.0.2: {}
 
   spdx-correct@3.2.0:
@@ -12823,6 +12837,8 @@ snapshots:
   through@2.3.8: {}
 
   tildify@2.0.0: {}
+
+  timezone-soft@1.5.2: {}
 
   tiny-invariant@1.0.6: {}
 

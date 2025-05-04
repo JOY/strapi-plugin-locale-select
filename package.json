@@ -31,13 +31,14 @@
   "dependencies": {
     "@strapi/design-system": "^2.0.0-rc.18",
     "@strapi/icons": "^2.0.0-rc.18",
-    "moment-timezone": "^0.5.47",
-    "react-intl": "^7.1.6"
+    "luxon": "^3.6.1",
+    "react-intl": "^7.1.6",
+    "react-timezone-select": "^3.2.8"
   },
   "devDependencies": {
     "@strapi/sdk-plugin": "^5.3.2",
     "@strapi/strapi": "^5.11.0",
-    "@strapi/typescript-utils": "^5.11.0",
+    "@strapi/typescript-utils": "^5.12.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "prettier": "^3.5.3",
@@ -57,22 +58,22 @@
   },
   "strapi": {
     "kind": "plugin",
-    "name": "strapi-plugin-timezone-select",
-    "displayName": "timezone-select",
-    "description": "A strapi custom field for selecting any timezone based on the moment.js timezones"
+    "name": "strapi-plugin-timezone-picker",
+    "displayName": "timezone-picker",
+    "description": "A strapi custom field for selecting any timezone based on the Luxon timezones"
   },
-  "name": "strapi-plugin-timezone-select",
-  "description": "A strapi custom field for selecting any timezone based on the moment.js timezones",
+  "name": "strapi-plugin-timezone-picker",
+  "description": "A strapi custom field for selecting any timezone based on the Luxon timezones",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/play14team/strapi-plugin-timezone-select.git"
+    "url": "git+ssh://git@github.com/JOY/strapi-plugin-timezone-picker.git"
   },
   "bugs": {
-    "url": "https://github.com/play14team/strapi-plugin-timezone-select/issues"
+    "url": "https://github.com/JOY/strapi-plugin-timezone-picker.git/issues"
   },
-  "homepage": "https://github.com/play14team/strapi-plugin-timezone-select#readme",
-  "author": "Cédric PONTET <cedric.pontet@gmail.com>",
+  "homepage": "https://github.com/JOY/strapi-plugin-timezone-picker#readme",
+  "author": "JOY <joy@joy.box>",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@swc/core",

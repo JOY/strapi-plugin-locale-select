@@ -2,7 +2,7 @@ import { getTranslation } from './utils/getTranslation';
 import { PLUGIN_ID } from './pluginId';
 import { Initializer } from './components/Initializer';
 import { PluginIcon } from './components/PluginIcon';
-import TimezoneSelectIcon from './components/TimezoneSelectIcon';
+import TimezoneSelectIcon from './components/TimezonePickerIcon';
 
 export default {
   register(app: any) {
@@ -21,7 +21,7 @@ export default {
         defaultMessage: 'Select any time zone',
       },
       components: {
-        Input: async () => import('./components/TimezoneSelect'),
+        Input: async () => import('./components/TimezonePicker'),
       },
       options: {},
     });
