@@ -9,9 +9,9 @@ import { PluginIcon } from './components/PluginIcon';
    – Clock is shipped with @strapi/icons (rc 23).
    – Country / Currency / Language are your own SVG components in /icons. */
 import { Clock as TimezoneIcon }  from '@strapi/icons';
-import CountryIcon   from '../icons/CountryIcon';
-import CurrencyIcon  from '../icons/CurrencyIcon';
-import LanguageIcon  from '../icons/LanguageIcon';
+import CountryIcon   from './icons/CountryIcon';
+import CurrencyIcon  from './icons/CurrencyIcon';
+import LanguageIcon  from './icons/LanguageIcon';
 
 /* -------------------------------------------------------------------------- */
 /*  MAIN                                                                      */
