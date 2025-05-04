@@ -1,7 +1,15 @@
 {
   "locale-select.plugin.name": "Locale Select",
+
   "locale-select.timezone.label": "Time zone",
   "locale-select.timezone.description": "Select any time zone",
+
   "locale-select.country.label": "Country",
-  "locale-select.country.description": "Select an ISO-3166 country"
+  "locale-select.country.description": "Select an ISO-3166 country",
+
+  "locale-select.currency.label": "Currency",
+  "locale-select.currency.description": "Select an ISO-4217 currency",
+
+  "locale-select.language.label": "Language",
+  "locale-select.language.description": "Select an IETF language tag"
 }
