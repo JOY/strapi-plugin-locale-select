@@ -1,6 +1,6 @@
-# Strapi plugin timezone-select
+# Strapi plugin timezone-picker
 
-A strapi custom field for selecting any timezone based on the [moment.js](https://momentjs.com/) timezones.
+A Strapi custom field for selecting any timezone based on the [Luxon](https://moment.github.io/luxon/) timezones.
 
 ## Installation
 
