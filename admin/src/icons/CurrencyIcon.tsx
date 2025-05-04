@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '@strapi/design-system/Icon';
+import { Icon } from '@strapi/design-system';
 
 /** Currency (generic “S” sign) */
 const CurrencyIcon = (props) => (
