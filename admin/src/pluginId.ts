@@ -1,1 +1,1 @@
-export const PLUGIN_ID = 'timezone-picker';
+export const PLUGIN_ID = 'locale-select';

@@ -1,7 +1,7 @@
 {
-  "timezone-select.plugin.name": "timezone",
-  "timezone-select.label": "Time zone",
-  "timezone-select.description": "Select any time zone",
-  "timezone-select.unsupported-timezone": "Unsupported time zone \"{timezone}\"",
-  "timezone-select.default-value-description": "Has to follow the time zone designations form the IANA Time Zone Database format i.e. America/New_York or Europe/London."
+  "locale-select.plugin.name": "Locale Select",
+  "locale-select.timezone.label": "Time zone",
+  "locale-select.timezone.description": "Select any time zone",
+  "locale-select.country.label": "Country",
+  "locale-select.country.description": "Select an ISO-3166 country"
 }
