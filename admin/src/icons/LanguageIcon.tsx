@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '@strapi/design-system';
+import { Icon } from '@strapi/design-system/Icon';
 
 /** Stylised “A” icon for Language field */
 const LanguageIcon = (props) => (
