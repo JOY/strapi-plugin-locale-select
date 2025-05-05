@@ -1,20 +1,14 @@
 import React from 'react';
-import Select from 'react-select';
-import { Box, Typography } from '@strapi/design-system';
+import {
+  SingleSelect,
+  SingleSelectOption,
+} from '@strapi/design-system/Select';
 import cc from 'currency-codes';
-import flags from 'emoji-flags';
 
-/** Build options one time */
-const currencies = cc.data.map((c) => {
-  // some currencies map to multiple countries – pick first for flag
-  const country = c.countries?.[0] || '';
-  const emoji   = flags.countryCode(country)?.emoji || '🏳️';
-
-  return {
-    value: c.code,                           // e.g. USD
-    label: `${emoji}  ${c.currency} (${c.code})`
-  };
-});
+const options = cc.data.map((c) => ({
+  value: c.code,
+  label: `${c.currency} (${c.code})`,
+}));
 
 type Props = {
   name: string;
@@ -22,25 +16,21 @@ type Props = {
   onChange: (e: { target: { name: string; value: string | null } }) => void;
 };
 
-const CurrencySelect: React.FC<Props> = ({ name, value, onChange }) => {
-  const selected = currencies.find(o => o.value === value) || null;
-
-  return (
-    <Box padding={1}>
-      <Typography variant="pi" fontWeight="bold">{name}</Typography>
-
-      <Select
-        classNamePrefix="strapi"
-        placeholder="Select currency"
-        options={currencies}
-        value={selected}
-        onChange={(opt) =>
-          onChange({ target: { name, value: opt ? opt.value : null } })
-        }
-        isClearable
-      />
-    </Box>
-  );
-};
+const CurrencySelect: React.FC<Props> = ({ name, value, onChange }) => (
+  <SingleSelect
+    label="Currency"
+    placeholder="Select currency"
+    value={value}
+    clearLabel="Clear"
+    onClear={() => onChange({ target: { name, value: null } })}
+    onChange={(v) => onChange({ target: { name, value: v ?? null } })}
+  >
+    {options.map((o) => (
+      <SingleSelectOption key={o.value} value={o.value}>
+        {o.label}
+      </SingleSelectOption>
+    ))}
+  </SingleSelect>
+);
 
 export default CurrencySelect;

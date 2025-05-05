@@ -1,9 +1,11 @@
 import React from 'react';
-import Select from 'react-select';
-import { Box, Typography } from '@strapi/design-system';
+import {
+  SingleSelect,
+  SingleSelectOption,
+} from '@strapi/design-system/Select';
 import ISO6391 from 'iso-639-1';
 
-const languages = ISO6391.getAllCodes().map(code => ({
+const options = ISO6391.getAllCodes().map((code) => ({
   value: code,
   label: `${ISO6391.getNativeName(code)} (${code})`,
 }));
@@ -14,25 +16,21 @@ type Props = {
   onChange: (e: { target: { name: string; value: string | null } }) => void;
 };
 
-const LanguageSelect: React.FC<Props> = ({ name, value, onChange }) => {
-  const selected = languages.find(l => l.value === value) || null;
-
-  return (
-    <Box padding={1}>
-      <Typography variant="pi" fontWeight="bold">{name}</Typography>
-
-      <Select
-        classNamePrefix="strapi"
-        placeholder="Select language"
-        options={languages}
-        value={selected}
-        onChange={opt =>
-          onChange({ target: { name, value: opt ? opt.value : null } })
-        }
-        isClearable
-      />
-    </Box>
-  );
-};
+const LanguageSelect: React.FC<Props> = ({ name, value, onChange }) => (
+  <SingleSelect
+    label="Language"
+    placeholder="Select language"
+    value={value}
+    clearLabel="Clear"
+    onClear={() => onChange({ target: { name, value: null } })}
+    onChange={(v) => onChange({ target: { name, value: v ?? null } })}
+  >
+    {options.map((o) => (
+      <SingleSelectOption key={o.value} value={o.value}>
+        {o.label}
+      </SingleSelectOption>
+    ))}
+  </SingleSelect>
+);
 
 export default LanguageSelect;
