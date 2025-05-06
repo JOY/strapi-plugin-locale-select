@@ -3,12 +3,12 @@ import {
   SingleSelect,
   SingleSelectOption,
 } from '@strapi/design-system/Select';
-import tzdata from 'react-timezone-select/dist/data'; // chỉ chứa labels
+import { allTimezones } from 'react-timezone-select';   // ✅ Stable API
 
-// react-timezone-select xuất object { [zone]: { abbr, altName, label } }
-const options = Object.entries(tzdata).map(([zone, meta]) => ({
-  value: zone,           // e.g. "Asia/Ho_Chi_Minh"
-  label: meta.label,     // "Ho Chi Minh City (GMT+07:00)"
+// allTimezones = { "Asia/Ho_Chi_Minh": "Ho Chi Minh City (GMT+07:00)", … }
+const options = Object.entries(allTimezones).map(([zone, label]) => ({
+  value: zone,
+  label,
 }));
 
 type Props = {
@@ -24,9 +24,7 @@ const TimezoneSelect: React.FC<Props> = ({ name, value, onChange }) => (
     value={value}
     clearLabel="Clear"
     onClear={() => onChange({ target: { name, value: null } })}
-    onChange={(v) =>
-      onChange({ target: { name, value: v ?? null } })
-    }
+    onChange={(v) => onChange({ target: { name, value: v ?? null } })}
   >
     {options.map((o) => (
       <SingleSelectOption key={o.value} value={o.value}>
