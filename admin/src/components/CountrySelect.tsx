@@ -2,7 +2,7 @@ import React from 'react';
 import {
   SingleSelect,
   SingleSelectOption,
-} from '@strapi/design-system/SingleSelect';
+} from '@strapi/design-system/Select';
 import countries from 'i18n-iso-countries';
 
 // load English labels (thêm locale khác nếu cần)

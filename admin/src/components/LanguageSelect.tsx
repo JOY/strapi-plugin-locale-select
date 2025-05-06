@@ -2,7 +2,7 @@ import React from 'react';
 import {
   SingleSelect,
   SingleSelectOption,
-} from '@strapi/design-system/SingleSelect';
+} from '@strapi/design-system/Select';
 import ISO6391 from 'iso-639-1';
 
 const options = ISO6391.getAllCodes().map((code) => ({

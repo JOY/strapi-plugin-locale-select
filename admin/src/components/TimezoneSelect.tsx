@@ -2,7 +2,7 @@ import React from 'react';
 import {
   SingleSelect,
   SingleSelectOption,
-} from '@strapi/design-system/SingleSelect';
+} from '@strapi/design-system/Select';
 import { allTimezones } from 'react-timezone-select';
 
 // allTimezones = { "Asia/Ho_Chi_Minh": "Ho Chi Minh City (GMT+07:00)", … }
@@ -24,7 +24,7 @@ const TimezoneSelect: React.FC<Props> = ({ name, value, onChange }) => (
     value={value}
     clearLabel="Clear"
     onClear={() => onChange({ target: { name, value: null } })}
-    onChange={(v) => onChange({ target: { name, value: v ?? null } })}
+    onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
   >
     {options.map((o) => (
       <SingleSelectOption key={o.value} value={o.value}>

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   SingleSelect,
   SingleSelectOption,
-} from '@strapi/design-system/SingleSelect';
+} from '@strapi/design-system/Select';
 import cc from 'currency-codes';
 
 const options = cc.data.map((c) => ({
