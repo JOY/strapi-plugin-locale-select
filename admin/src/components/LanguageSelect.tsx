@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  SingleSelect,
-  SingleSelectOption,
-} from '@strapi/design-system/Select';
+import { SingleSelect, SingleSelectOption } from '@strapi/design-system';
 import ISO6391 from 'iso-639-1';
 
 const options = ISO6391.getAllCodes().map((code) => ({
@@ -23,7 +20,7 @@ const LanguageSelect: React.FC<Props> = ({ name, value, onChange }) => (
     value={value}
     clearLabel="Clear"
     onClear={() => onChange({ target: { name, value: null } })}
-    onChange={(v) => onChange({ target: { name, value: v ?? null } })}
+    onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
   >
     {options.map((o) => (
       <SingleSelectOption key={o.value} value={o.value}>

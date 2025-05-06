@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  SingleSelect,
-  SingleSelectOption,
-} from '@strapi/design-system/Select';
+import { SingleSelect, SingleSelectOption } from '@strapi/design-system';
 import { allTimezones } from 'react-timezone-select';
 
 // allTimezones = { "Asia/Ho_Chi_Minh": "Ho Chi Minh City (GMT+07:00)", … }

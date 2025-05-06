@@ -2,7 +2,7 @@ import React from 'react';
 import {
   SingleSelect,
   SingleSelectOption,
-} from '@strapi/design-system/Select';
+} from '@strapi/design-system';
 import countries from 'i18n-iso-countries';
 
 // load English labels (thêm locale khác nếu cần)
@@ -30,7 +30,7 @@ const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => (
     value={value}
     clearLabel="Clear"
     onClear={() => onChange({ target: { name, value: null } })}
-    onChange={(v) => onChange({ target: { name, value: v ?? null } })}
+    onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
   >
     {options.map((o) => (
       <SingleSelectOption key={o.value} value={o.value}>
