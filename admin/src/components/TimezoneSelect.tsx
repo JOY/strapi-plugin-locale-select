@@ -2,8 +2,8 @@ import React from 'react';
 import {
   SingleSelect,
   SingleSelectOption,
-} from '@strapi/design-system/Select';
-import { allTimezones } from 'react-timezone-select';   // ✅ Stable API
+} from '@strapi/design-system/SingleSelect';
+import { allTimezones } from 'react-timezone-select';
 
 // allTimezones = { "Asia/Ho_Chi_Minh": "Ho Chi Minh City (GMT+07:00)", … }
 const options = Object.entries(allTimezones).map(([zone, label]) => ({
