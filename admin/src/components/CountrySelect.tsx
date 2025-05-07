@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  SingleSelect,
-  SingleSelectOption,
-} from '@strapi/design-system';
+import { Combobox, ComboboxOption } from '@strapi/design-system';
 import countries from 'i18n-iso-countries';
 
 // load English labels (thêm locale khác nếu cần)
@@ -10,11 +7,15 @@ countries.registerLocale(
   require('i18n-iso-countries/langs/en.json')
 );
 
+function countryFlag(code: string) {
+  return String.fromCodePoint(...[...code.toUpperCase()].map(c => 127397 + c.charCodeAt()));
+}
+
 const options = Object.entries(
   countries.getNames('en', { select: 'official' })
 ).map(([code, name]) => ({
   value: code,
-  label: `${name} (${code})`,
+  label: `${countryFlag(code)} ${name} (${code})`,
 }));
 
 type Props = {
@@ -24,7 +25,7 @@ type Props = {
 };
 
 const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => (
-  <SingleSelect
+  <Combobox
     label="Country"
     placeholder="Select country"
     value={value}
@@ -33,11 +34,11 @@ const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => (
     onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
   >
     {options.map((o) => (
-      <SingleSelectOption key={o.value} value={o.value}>
+      <ComboboxOption key={o.value} value={o.value}>
         {o.label}
-      </SingleSelectOption>
+      </ComboboxOption>
     ))}
-  </SingleSelect>
+  </Combobox>
 );
 
 export default CountrySelect;

@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  SingleSelect,
-  SingleSelectOption,
-} from '@strapi/design-system';
+import { Combobox, ComboboxOption } from '@strapi/design-system';
 import cc from 'currency-codes';
 
 const options = cc.data.map((c) => ({
@@ -17,7 +14,7 @@ type Props = {
 };
 
 const CurrencySelect: React.FC<Props> = ({ name, value, onChange }) => (
-  <SingleSelect
+  <Combobox
     label="Currency"
     placeholder="Select currency"
     value={value}
@@ -26,11 +23,11 @@ const CurrencySelect: React.FC<Props> = ({ name, value, onChange }) => (
     onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
   >
     {options.map((o) => (
-      <SingleSelectOption key={o.value} value={o.value}>
+      <ComboboxOption key={o.value} value={o.value}>
         {o.label}
-      </SingleSelectOption>
+      </ComboboxOption>
     ))}
-  </SingleSelect>
+  </Combobox>
 );
 
 export default CurrencySelect;

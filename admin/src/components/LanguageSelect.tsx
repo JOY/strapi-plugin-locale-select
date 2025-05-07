@@ -1,5 +1,5 @@
 import React from 'react';
-import { SingleSelect, SingleSelectOption } from '@strapi/design-system';
+import { SingleSelect, SingleSelectOption, Combobox, ComboboxOption } from '@strapi/design-system';
 import ISO6391 from 'iso-639-1';
 
 const options = ISO6391.getAllCodes().map((code) => ({

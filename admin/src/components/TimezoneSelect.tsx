@@ -1,12 +1,19 @@
 import React from 'react';
-import { SingleSelect, SingleSelectOption } from '@strapi/design-system';
+import { Combobox, ComboboxOption } from '@strapi/design-system';
 import { allTimezones } from 'react-timezone-select';
+import { DateTime } from 'luxon';
 
 // allTimezones = { "Asia/Ho_Chi_Minh": "Ho Chi Minh City (GMT+07:00)", … }
-const options = Object.entries(allTimezones).map(([zone, label]) => ({
-  value: zone,
-  label,
-}));
+const options = Object.entries(allTimezones).map(([zone, label]) => {
+  let offset = '';
+  try {
+    offset = DateTime.now().setZone(zone).toFormat('ZZ');
+  } catch {}
+  return {
+    value: zone,
+    label: `${label} (GMT${offset})`,
+  };
+});
 
 type Props = {
   name: string;
@@ -15,7 +22,7 @@ type Props = {
 };
 
 const TimezoneSelect: React.FC<Props> = ({ name, value, onChange }) => (
-  <SingleSelect
+  <Combobox
     label="Time zone"
     placeholder="Select time zone"
     value={value}
@@ -24,11 +31,11 @@ const TimezoneSelect: React.FC<Props> = ({ name, value, onChange }) => (
     onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
   >
     {options.map((o) => (
-      <SingleSelectOption key={o.value} value={o.value}>
+      <ComboboxOption key={o.value} value={o.value}>
         {o.label}
-      </SingleSelectOption>
+      </ComboboxOption>
     ))}
-  </SingleSelect>
+  </Combobox>
 );
 
 export default TimezoneSelect;
