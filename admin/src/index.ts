@@ -33,6 +33,21 @@ export default {
         defaultMessage: 'Select an IANA timezone',
       },
       components: { Input: async () => import('./components/TimezoneSelect') },
+      options: {
+        base: [
+          {
+            sectionTitle: null,
+            items: [
+              {
+                name: 'required',
+                type: 'checkbox',
+                intlLabel: { id: 'global.required', defaultMessage: 'Required' },
+                description: { id: 'global.required.description', defaultMessage: 'Field must be filled' },
+              },
+            ],
+          },
+        ],
+      },
     });
 
     /* ---------- Country --------------------------------------------------- */
@@ -50,6 +65,21 @@ export default {
         defaultMessage: 'Select an ISO-3166 country',
       },
       components: { Input: async () => import('./components/CountrySelect') },
+      options: {
+        base: [
+          {
+            sectionTitle: null,
+            items: [
+              {
+                name: 'required',
+                type: 'checkbox',
+                intlLabel: { id: 'global.required', defaultMessage: 'Required' },
+                description: { id: 'global.required.description', defaultMessage: 'Field must be filled' },
+              },
+            ],
+          },
+        ],
+      },
     });
 
     /* ---------- Currency -------------------------------------------------- */
@@ -67,6 +97,21 @@ export default {
         defaultMessage: 'Select an ISO-4217 currency',
       },
       components: { Input: async () => import('./components/CurrencySelect') },
+      options: {
+        base: [
+          {
+            sectionTitle: null,
+            items: [
+              {
+                name: 'required',
+                type: 'checkbox',
+                intlLabel: { id: 'global.required', defaultMessage: 'Required' },
+                description: { id: 'global.required.description', defaultMessage: 'Field must be filled' },
+              },
+            ],
+          },
+        ],
+      },
     });
 
     /* ---------- Language -------------------------------------------------- */
@@ -84,6 +129,21 @@ export default {
         defaultMessage: 'Select an IETF language tag',
       },
       components: { Input: async () => import('./components/LanguageSelect') },
+      options: {
+        base: [
+          {
+            sectionTitle: null,
+            items: [
+              {
+                name: 'required',
+                type: 'checkbox',
+                intlLabel: { id: 'global.required', defaultMessage: 'Required' },
+                description: { id: 'global.required.description', defaultMessage: 'Field must be filled' },
+              },
+            ],
+          },
+        ],
+      },
     });
 
     /* ---------- Optional left-menu link ----------------------------------- */
