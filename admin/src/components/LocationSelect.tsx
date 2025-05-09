@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
 import { Combobox, ComboboxOption } from "@strapi/design-system";
 
-// Props: config = { enableState: boolean, enableCity: boolean }
-const LocationSelect = ({ name, value, onChange, config }) => {
+// Props: options = { enableState: boolean, enableCity: boolean }
+const LocationSelect = ({ name, value, onChange, options }) => {
   const [country, setCountry] = useState(value?.country || "");
   const [state, setState] = useState(value?.state || "");
   const [city, setCity] = useState(value?.city || "");
@@ -43,7 +43,7 @@ const LocationSelect = ({ name, value, onChange, config }) => {
           </ComboboxOption>
         ))}
       </Combobox>
-      {config?.enableState && (
+      {options?.enableState && (
         <Combobox
           label="State/Province"
           value={state}
@@ -59,7 +59,7 @@ const LocationSelect = ({ name, value, onChange, config }) => {
           ))}
         </Combobox>
       )}
-      {config?.enableCity && (
+      {options?.enableCity && (
         <Combobox
           label="City"
           value={city}
