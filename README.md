@@ -1,6 +1,11 @@
 # Strapi plugin locale-select
 
 A Strapi custom field for selecting any locale based on the [Luxon](https://moment.github.io/luxon/) locales.
+Currenty it has:
+- Country, with Flags
+- Language
+- Timezone
+- Currency
 
 ## Installation
 
