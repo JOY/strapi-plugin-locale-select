@@ -1,21 +1,14 @@
 import React from 'react';
+import { Country } from 'country-state-city';
 import { Combobox, ComboboxOption } from '@strapi/design-system';
-import countries from 'i18n-iso-countries';
-
-// load English labels (thêm locale khác nếu cần)
-countries.registerLocale(
-  require('i18n-iso-countries/langs/en.json')
-);
 
 function countryFlag(code: string) {
   return String.fromCodePoint(...[...code.toUpperCase()].map(c => 127397 + c.charCodeAt()));
 }
 
-const options = Object.entries(
-  countries.getNames('en', { select: 'official' })
-).map(([code, name]) => ({
-  value: code,
-  label: `${countryFlag(code)} ${name} (${code})`,
+const options = Country.getAllCountries().map((c) => ({
+  value: c.isoCode,
+  label: `${countryFlag(c.isoCode)} ${c.name} (${c.isoCode})`,
 }));
 
 type Props = {

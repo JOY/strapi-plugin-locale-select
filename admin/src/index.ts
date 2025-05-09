@@ -146,6 +146,70 @@ export default {
       },
     });
 
+    /* ---------- Location -------------------------------------------------- */
+    app.customFields.register({
+      name: "location-select",
+      pluginId: PLUGIN_ID,
+      type: "json",
+      intlLabel: { id: "location.label", defaultMessage: "Location" },
+      intlDescription: { id: "location.desc", defaultMessage: "Select country, state, city" },
+      components: { Input: async () => import("./components/LocationSelect") },
+      options: {
+        base: [
+          {
+            sectionTitle: null,
+            items: [
+              {
+                name: "required",
+                type: "checkbox",
+                intlLabel: { id: "global.required", defaultMessage: "Required" },
+                description: { id: "global.required.description", defaultMessage: "" },
+              },
+              {
+                name: "enableState",
+                type: "checkbox",
+                intlLabel: { id: "location.enableState", defaultMessage: "Enable State/Province" },
+                description: { id: "location.enableState.desc", defaultMessage: "" },
+                defaultValue: true,
+              },
+              {
+                name: "enableCity",
+                type: "checkbox",
+                intlLabel: { id: "location.enableCity", defaultMessage: "Enable City" },
+                description: { id: "location.enableCity.desc", defaultMessage: "" },
+                defaultValue: true,
+              },
+            ],
+          },
+        ],
+      },
+    });
+
+    /* ---------- Address Autocomplete -------------------------------------- */
+    app.customFields.register({
+      name: "address-autocomplete",
+      pluginId: PLUGIN_ID,
+      type: "string",
+      intlLabel: { id: "address.label", defaultMessage: "Address" },
+      intlDescription: { id: "address.desc", defaultMessage: "Google Places Autocomplete" },
+      components: { Input: async () => import("./components/AddressAutocomplete") },
+      options: {
+        base: [
+          {
+            sectionTitle: null,
+            items: [
+              {
+                name: "required",
+                type: "checkbox",
+                intlLabel: { id: "global.required", defaultMessage: "Required" },
+                description: { id: "global.required.description", defaultMessage: "" },
+              },
+            ],
+          },
+        ],
+      },
+    });
+
     /* ---------- Optional left-menu link ----------------------------------- */
     app.addMenuLink({
       to: `plugins/${PLUGIN_ID}`,
