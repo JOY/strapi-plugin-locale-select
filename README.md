@@ -105,6 +105,7 @@ pnpm install
 
 ```
 
-## Related
+## Donate
+https://patreon.com/JOY
 
-This plugin is inspired by Chris Ebert's [strapi-plugin-country-picker](https://github.com/ChrisEbert/strapi-plugin-country-picker)
+
