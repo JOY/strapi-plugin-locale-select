@@ -166,13 +166,6 @@ export default {
                 description: { id: "global.required.description", defaultMessage: "" },
               },
               {
-                name: "enableState",
-                type: "checkbox",
-                intlLabel: { id: "location.enableState", defaultMessage: "Enable State/Province" },
-                description: { id: "location.enableState.desc", defaultMessage: "" },
-                defaultValue: true,
-              },
-              {
                 name: "enableCity",
                 type: "checkbox",
                 intlLabel: { id: "location.enableCity", defaultMessage: "Enable City" },
