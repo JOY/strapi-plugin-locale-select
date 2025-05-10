@@ -165,13 +165,6 @@ export default {
                 intlLabel: { id: "global.required", defaultMessage: "Required" },
                 description: { id: "global.required.description", defaultMessage: "" },
               },
-              {
-                name: "enableCity",
-                type: "checkbox",
-                intlLabel: { id: "location.enableCity", defaultMessage: "Enable City" },
-                description: { id: "location.enableCity.desc", defaultMessage: "" },
-                defaultValue: true,
-              },
             ],
           },
         ],
