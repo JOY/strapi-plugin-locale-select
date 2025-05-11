@@ -22,8 +22,8 @@ const App = () => {
       </Box>
       <Box paddingLeft={6} paddingRight={6}>
         <Routes>
-          <Route index element={<HomePage />} />
-          <Route path="settings" element={<Settings />} />
+          <Route index element={<Settings />} />
+          <Route path="homepage" element={<HomePage />} />
           <Route path="*" element={<Page.Error />} />
         </Routes>
       </Box>

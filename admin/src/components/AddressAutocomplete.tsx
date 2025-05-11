@@ -15,8 +15,8 @@ const fetchSettings = async () => {
     // Add debug logging
     console.log('Fetching settings from API...');
     
-    // Use the correct endpoint path for the admin API
-    const response = await fetch(`/locale-select/settings`);
+    // Use the correct endpoint path for the admin API (no plugin prefix needed for server routes)
+    const response = await fetch(`/settings`);
     console.log('Response received:', response);
     
     if (!response.ok) {
