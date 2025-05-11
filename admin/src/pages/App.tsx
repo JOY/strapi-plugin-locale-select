@@ -1,6 +1,6 @@
 import { Page } from '@strapi/strapi/admin';
 import { Routes, Route } from 'react-router-dom';
-import { HeaderLayout, ContentLayout, Layout } from '@strapi/design-system';
+import { Box, Main } from '@strapi/design-system';
 import { Helmet } from 'react-helmet';
 import { useIntl } from 'react-intl';
 
@@ -12,20 +12,22 @@ const App = () => {
   const { formatMessage } = useIntl();
   
   return (
-    <Layout>
+    <Main>
       <Helmet title={formatMessage({ id: getTranslation('plugin.name') })} />
-      <HeaderLayout
-        title={formatMessage({ id: getTranslation('plugin.name') })}
-        subtitle={formatMessage({ id: getTranslation('plugin.name') })}
-      />
-      <ContentLayout>
+      <Box paddingBottom={4}>
+        <Box paddingLeft={6} paddingTop={6} paddingBottom={2}>
+          <h1>{formatMessage({ id: getTranslation('plugin.name') })}</h1>
+          <p>{formatMessage({ id: getTranslation('plugin.name') })}</p>
+        </Box>
+      </Box>
+      <Box paddingLeft={6} paddingRight={6}>
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="settings" element={<Settings />} />
           <Route path="*" element={<Page.Error />} />
         </Routes>
-      </ContentLayout>
-    </Layout>
+      </Box>
+    </Main>
   );
 };
 
