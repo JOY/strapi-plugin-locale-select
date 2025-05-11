@@ -11,5 +11,19 @@
   "locale-select.currency.description": "Select an ISO-4217 currency",
 
   "locale-select.language.label": "Language",
-  "locale-select.language.description": "Select an IETF language tag"
+  "locale-select.language.description": "Select an IETF language tag",
+
+  "locale-select.settings.title": "Plugin Settings",
+  "locale-select.settings.googleMaps.title": "Google Maps Configuration",
+  "locale-select.settings.googleMaps.apiKey": "Google Maps API Key",
+  "locale-select.settings.googleMaps.apiKey.hint": "Enter your Google Maps API key with Places API enabled",
+  "locale-select.settings.save": "Save Settings",
+  "locale-select.settings.restart": "Restart Application",
+  "locale-select.settings.saved": "Settings saved successfully",
+  "locale-select.settings.googleMaps.help.title": "How to get a Google Maps API Key",
+  "locale-select.settings.googleMaps.help.description": "To use the address autocomplete feature, you need a Google Maps API key with the Places API enabled:",
+  "locale-select.settings.googleMaps.help.step1": "Go to the Google Cloud Console",
+  "locale-select.settings.googleMaps.help.step2": "Create a new project or select an existing one",
+  "locale-select.settings.googleMaps.help.step3": "Enable the Google Maps Places API",
+  "locale-select.settings.googleMaps.help.step4": "Create an API key and copy it here"
 }
