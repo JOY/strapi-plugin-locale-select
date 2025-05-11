@@ -17,17 +17,17 @@ import routes from './routes';
 import services from './services';
 
 export default {
-	register({ strapi }) {
-		// Đã xóa đăng ký custom field phía server để tránh lỗi invariant
-		// Nếu cần logic khác, thêm ở đây
-	},
-	bootstrap,
-	destroy,
-	config,
-	controllers,
-	routes,
-	services,
-	contentTypes,
-	policies,
-	middlewares,
-}; 
+  register({ strapi }) {
+    // Đăng ký custom field chuẩn Strapi 5.x
+    require('./register').default({ strapi });
+  },
+  bootstrap,
+  destroy,
+  config,
+  controllers,
+  routes,
+  services,
+  contentTypes,
+  policies,
+  middlewares,
+};
