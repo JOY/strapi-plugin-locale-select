@@ -12,16 +12,49 @@ interface AddressAutocompleteProps {
 // Helper function to fetch settings
 const fetchSettings = async () => {
   try {
+    // Add debug logging
+    console.log('Fetching settings from API...');
+    
     // Use the correct endpoint path for the admin API
     const response = await fetch(`/locale-select/settings`);
+    console.log('Response received:', response);
+    
     if (!response.ok) {
       throw new Error(`Error fetching settings: ${response.statusText}`);
     }
-    const data = await response.json();
+    
+    // Check the content type to handle response correctly
+    const contentType = response.headers.get('content-type');
+    console.log('Content type:', contentType);
+    
+    let data;
+    if (contentType && contentType.includes('application/json')) {
+      const text = await response.text();
+      console.log('Response text:', text);
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch (jsonError: any) {
+        console.error('JSON parse error:', jsonError);
+        throw new Error(`Failed to parse JSON: ${jsonError?.message || 'Unknown error'}`);
+      }
+    } else {
+      // Try to parse as text
+      const text = await response.text();
+      console.log('Response as text:', text);
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch (jsonError) {
+        console.warn('Could not parse as JSON, using text response');
+        data = { responseText: text };
+      }
+    }
+    
+    console.log('Parsed data:', data);
     return data;
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error fetching settings:', error);
-    return null;
+    // Return a default empty object with debug info
+    return { error: error?.message || 'Unknown error', googleMapsApiKey: null };
   }
 };
 
