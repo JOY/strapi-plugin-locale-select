@@ -3,7 +3,6 @@
  */
 import bootstrap from './bootstrap';
 import destroy from './destroy';
-import register from './register';
 
 /**
  * Plugin server methods
@@ -19,7 +18,12 @@ import services from './services';
 export default {
   register({ strapi }) {
     // Đăng ký custom field chuẩn Strapi 5.x
-    register({ strapi });
+    strapi.customFields.register({
+      name: 'address-autocomplete',
+      plugin: 'locale-select',
+      type: 'string',
+      // Có thể bổ sung thêm các option khác nếu cần thiết
+    });
   },
   bootstrap,
   destroy,
