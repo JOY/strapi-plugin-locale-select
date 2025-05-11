@@ -21,8 +21,7 @@ const HomePage = () => {
             <Button
               variant="secondary"
               startIcon={<Cog />}
-              to="/admin/plugins/locale-select/settings"
-              as={Link}
+              onClick={() => window.location.href = '/admin/plugins/locale-select/settings'}
             >
               Configure Settings
             </Button>
