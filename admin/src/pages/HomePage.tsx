@@ -1,4 +1,4 @@
-import { Main, Link, Box, Typography, Stack, Button } from '@strapi/design-system';
+import { Main, Link, Box, Typography, Flex, Button } from '@strapi/design-system';
 import { Cog } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { getTranslation } from '../utils/getTranslation';
@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <Main>
       <Box padding={8} background="neutral100">
-        <Stack spacing={4}>
+        <Flex direction="column" gap={4}>
           <Typography variant="alpha">
             {formatMessage({ id: getTranslation('plugin.name') })}
           </Typography>
@@ -27,7 +27,7 @@ const HomePage = () => {
               Configure Settings
             </Button>
           </Box>
-        </Stack>
+        </Flex>
       </Box>
     </Main>
   );

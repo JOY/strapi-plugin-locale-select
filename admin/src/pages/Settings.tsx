@@ -5,7 +5,7 @@ import {
   Typography,
   TextInput,
   Button,
-  Stack,
+  Flex,
   Alert,
 } from '@strapi/design-system';
 import { Check, Play } from '@strapi/icons';
@@ -84,7 +84,7 @@ const Settings = () => {
             />
           </Box>
           <Box paddingTop={4}>
-            <Stack horizontal spacing={2}>
+            <Flex gap={2}>
               <Button
                 onClick={saveSettings}
                 loading={isSaving}
@@ -99,7 +99,7 @@ const Settings = () => {
               >
                 {formatMessage({ id: getTranslation('settings.restart') })}
               </Button>
-            </Stack>
+            </Flex>
           </Box>
           {showAlert && (
             <Box paddingTop={4}>
@@ -109,7 +109,7 @@ const Settings = () => {
             </Box>
           )}
           <Box paddingTop={4}>
-            <Stack spacing={2}>
+            <Flex direction="column" gap={2}>
               <Typography variant="delta">
                 {formatMessage({ id: getTranslation('settings.googleMaps.help.title') })}
               </Typography>
@@ -128,7 +128,7 @@ const Settings = () => {
               <Typography variant="omega">
                 - {formatMessage({ id: getTranslation('settings.googleMaps.help.step4') })}
               </Typography>
-            </Stack>
+            </Flex>
           </Box>
         </Box>
       </Box>
