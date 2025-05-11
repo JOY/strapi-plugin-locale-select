@@ -19,7 +19,7 @@ import services from './services';
 export default {
   register({ strapi }) {
     // Đăng ký custom field chuẩn Strapi 5.x
-    registerCustomField({ strapi });
+    register({ strapi });
   },
   bootstrap,
   destroy,
