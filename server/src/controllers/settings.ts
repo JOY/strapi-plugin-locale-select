@@ -2,30 +2,55 @@
 
 export default {
   async getSettings(ctx) {
-    const pluginStore = strapi.store({
-      environment: '',
-      type: 'plugin',
-      name: 'locale-select',
-    });
+    try {
+      console.log('Getting settings from plugin store...');
+      const pluginStore = strapi.store({
+        environment: '',
+        type: 'plugin',
+        name: 'locale-select',
+      });
 
-    const settings = await pluginStore.get({ key: 'settings' }) || {};
-    ctx.send(settings);
+      const settings = await pluginStore.get({ key: 'settings' }) || {};
+      console.log('Retrieved settings:', settings);
+      
+      // Make sure we're sending a properly formatted JSON object
+      ctx.body = settings;
+      ctx.type = 'application/json';
+    } catch (error) {
+      console.error('Error getting settings:', error);
+      ctx.status = 500;
+      ctx.body = { error: 'Failed to get settings' };
+      ctx.type = 'application/json';
+    }
   },
 
   async setSettings(ctx) {
-    const { body } = ctx.request;
-    
-    const pluginStore = strapi.store({
-      environment: '',
-      type: 'plugin',
-      name: 'locale-select',
-    });
+    try {
+      console.log('Setting plugin settings...');
+      const { body } = ctx.request;
+      console.log('Received settings data:', body);
+      
+      const pluginStore = strapi.store({
+        environment: '',
+        type: 'plugin',
+        name: 'locale-select',
+      });
 
-    await pluginStore.set({
-      key: 'settings',
-      value: body,
-    });
+      await pluginStore.set({
+        key: 'settings',
+        value: body,
+      });
 
-    ctx.send({ ok: true });
+      console.log('Settings saved successfully');
+      
+      // Make sure we're sending a properly formatted JSON response
+      ctx.body = { ok: true };
+      ctx.type = 'application/json';
+    } catch (error) {
+      console.error('Error saving settings:', error);
+      ctx.status = 500;
+      ctx.body = { error: 'Failed to save settings' };
+      ctx.type = 'application/json';
+    }
   },
 };
