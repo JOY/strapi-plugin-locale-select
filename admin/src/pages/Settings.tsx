@@ -47,7 +47,7 @@ const Settings = () => {
     setIsSaving(true);
     try {
       console.log('Saving settings to API...');
-      await request(`/settings`, {
+      await request(`/${PLUGIN_ID}/settings`, {
         method: 'POST',
         body: { googleMapsApiKey },
       });
