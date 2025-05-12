@@ -2,7 +2,8 @@ import React from 'react';
 import { Country } from 'country-state-city';
 import { Combobox, ComboboxOption } from '@strapi/design-system';
 
-function countryFlag(code: string) {
+function countryFlag(code: string = '') {
+  if (!code) return '';
   return String.fromCodePoint(...[...code.toUpperCase()].map(c => 127397 + c.charCodeAt()));
 }
 
@@ -17,21 +18,36 @@ type Props = {
   onChange: (e: { target: { name: string; value: string | null } }) => void;
 };
 
-const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => (
-  <Combobox
-    label="Country"
-    placeholder="Select country"
-    value={value}
-    clearLabel="Clear"
-    onClear={() => onChange({ target: { name, value: null } })}
-    onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
-  >
-    {options.map((o) => (
+const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
+  // Lọc các options hiển thị dựa trên giá trị nhập vào
+  const [inputValue, setInputValue] = React.useState('');
+  
+  // Lọc các options dựa trên giá trị nhập vào
+  const filteredOptions = inputValue ? options.filter(option => {
+    const searchValue = inputValue.toLowerCase();
+    const optionLabel = option.label.toLowerCase();
+    const optionValue = option.value.toLowerCase();
+    
+    return optionLabel.includes(searchValue) || optionValue.includes(searchValue);
+  }) : options;
+  
+  return (
+    <Combobox
+      label="Country"
+      placeholder="Select country"
+      value={value}
+      clearLabel="Clear"
+      onClear={() => onChange({ target: { name, value: null } })}
+      onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
+      onInputChange={setInputValue}
+    >
+    {filteredOptions.map((o) => (
       <ComboboxOption key={o.value} value={o.value}>
         {o.label}
       </ComboboxOption>
     ))}
   </Combobox>
-);
+  );
+};
 
 export default CountrySelect;
