@@ -21,16 +21,20 @@ type Props = {
 const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
   // Lọc các options hiển thị dựa trên giá trị nhập vào
   const [inputValue, setInputValue] = React.useState('');
-  
+
+  React.useEffect(() => {
+    console.log('inputValue:', inputValue);
+  }, [inputValue]);
+
   // Lọc các options dựa trên giá trị nhập vào
-  const filteredOptions = inputValue ? options.filter(option => {
-    const searchValue = inputValue.toLowerCase();
+  const safeInput = typeof inputValue === 'string' ? inputValue : '';
+  const filteredOptions = safeInput ? options.filter(option => {
+    const searchValue = safeInput.toLowerCase();
     const optionLabel = option.label.toLowerCase();
     const optionValue = option.value.toLowerCase();
-    
     return optionLabel.includes(searchValue) || optionValue.includes(searchValue);
   }) : options;
-  
+
   return (
     <Combobox
       label="Country"
@@ -39,14 +43,15 @@ const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
       clearLabel="Clear"
       onClear={() => onChange({ target: { name, value: null } })}
       onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
-      onInputChange={setInputValue}
+      onSearch={setInputValue} // Thử dùng onSearch thay vì onInputChange
+      // onInputChange={setInputValue} // Nếu onSearch không hoạt động, đổi lại dòng này
     >
-    {filteredOptions.map((o) => (
-      <ComboboxOption key={o.value} value={o.value}>
-        {o.label}
-      </ComboboxOption>
-    ))}
-  </Combobox>
+      {filteredOptions.map((o) => (
+        <ComboboxOption key={o.value} value={o.value}>
+          {o.label}
+        </ComboboxOption>
+      ))}
+    </Combobox>
   );
 };
 
