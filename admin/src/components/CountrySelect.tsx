@@ -44,7 +44,18 @@ const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
       onClear={() => onChange({ target: { name, value: null } })}
       onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
       // onSearch={setInputValue} // Đã revert về onInputChange
-      onInputChange={e => setInputValue(e?.target?.value ?? '')}
+      onInputChange={e => {
+        if (typeof e === 'string') {
+          setInputValue(e);
+          console.log('CountrySelect onInputChange (string):', e);
+        } else if (e && typeof e === 'object' && 'target' in e && typeof e.target.value === 'string') {
+          setInputValue(e.target.value);
+          console.log('CountrySelect onInputChange (event):', e.target.value, e);
+        } else {
+          setInputValue('');
+          console.log('CountrySelect onInputChange (unknown):', e);
+        }
+      }}
     >
       {filteredOptions.map((o) => (
         <ComboboxOption key={o.value} value={o.value}>
