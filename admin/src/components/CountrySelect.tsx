@@ -44,7 +44,7 @@ const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
       onClear={() => onChange({ target: { name, value: null } })}
       onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
       // onSearch={setInputValue} // Đã revert về onInputChange
-      onInputChange={setInputValue}
+      onInputChange={e => setInputValue(e?.target?.value ?? '')}
     >
       {filteredOptions.map((o) => (
         <ComboboxOption key={o.value} value={o.value}>
