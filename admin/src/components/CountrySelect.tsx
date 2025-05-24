@@ -27,13 +27,20 @@ const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
   }, [inputValue]);
 
   // Lọc các options dựa trên giá trị nhập vào
+  // Helper: remove accents
+  const removeAccents = (str: string) =>
+    str.normalize('NFD').replace(/\u0300-\u036f/g, '');
+
   const safeInput = typeof inputValue === 'string' ? inputValue : '';
-  const filteredOptions = safeInput ? options.filter(option => {
-    const searchValue = safeInput.toLowerCase();
-    const optionLabel = option.label.toLowerCase();
-    const optionValue = option.value.toLowerCase();
-    return optionLabel.includes(searchValue) || optionValue.includes(searchValue);
-  }) : options;
+  const filterValue = removeAccents(safeInput).toLowerCase();
+
+  const filteredOptions = filterValue
+    ? options.filter(option => {
+        const label = removeAccents(option.label).toLowerCase();
+        const value = removeAccents(option.value).toLowerCase();
+        return label.includes(filterValue) || value.includes(filterValue);
+      })
+    : options;
 
   return (
     <Combobox
