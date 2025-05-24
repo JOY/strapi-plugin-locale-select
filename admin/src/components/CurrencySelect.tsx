@@ -25,9 +25,11 @@ const CurrencySelect: React.FC<Props> = ({ name, value, onChange }) => {
   const safeInput = typeof inputValue === 'string' ? inputValue : '';
   const filteredOptions = safeInput ? options.filter(option => {
     const searchValue = safeInput.toLowerCase();
-    const optionLabel = option.label.toLowerCase();
-    const optionValue = option.value.toLowerCase();
-    return optionLabel.includes(searchValue) || optionValue.includes(searchValue);
+    // Ghép cả label và value để search, bỏ dấu, không phân biệt hoa thường
+    return (
+      option.label.toLowerCase().includes(searchValue) ||
+      option.value.toLowerCase().includes(searchValue)
+    );
   }) : options;
 
   return (
