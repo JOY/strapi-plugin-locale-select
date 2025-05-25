@@ -55,7 +55,7 @@ const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
     <Combobox
       label="Country"
       placeholder="Select country"
-      value={value}
+      // value={value} // Tạm thời bỏ prop value để kiểm tra UI
       clearLabel="Clear"
       onClear={() => onChange({ target: { name, value: null } })}
       onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
