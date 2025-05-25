@@ -4,7 +4,9 @@ import { Combobox, ComboboxOption } from '@strapi/design-system';
 
 function countryFlag(code: string = '') {
   if (!code) return '';
-  return String.fromCodePoint(...[...code.toUpperCase()].map(c => 127397 + c.charCodeAt()));
+  // Ensure code is at least 2 characters for country flag, fallback to 'A'
+  const safeCode = code.toUpperCase().padEnd(2, 'A');
+  return String.fromCodePoint(...[...safeCode].map(c => 127397 + c.charCodeAt()));
 }
 
 const options = Country.getAllCountries().map((c) => ({
@@ -51,7 +53,7 @@ const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
       onClear={() => onChange({ target: { name, value: null } })}
       onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
       // onSearch={setInputValue} // Đã revert về onInputChange
-      onInputChange={e => {
+      onInputChange={(e: any) => {
         if (typeof e === 'string') {
           setInputValue(e);
           console.log('CountrySelect onInputChange (string):', e);
