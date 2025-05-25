@@ -21,59 +21,16 @@ type Props = {
 };
 
 const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
-  // Lọc các options hiển thị dựa trên giá trị nhập vào
-  const [inputValue, setInputValue] = React.useState('');
-
-  React.useEffect(() => {
-    console.log('inputValue:', inputValue);
-  }, [inputValue]);
-
-  // Lọc các options dựa trên giá trị nhập vào
-  // Helper: remove accents
-  const removeAccents = (str: string) =>
-    str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
-  const safeInput = typeof inputValue === 'string' ? inputValue : '';
-  const filterValue = removeAccents(safeInput).toLowerCase();
-
-  const filteredOptions = filterValue
-    ? options.filter(option => {
-        const label = removeAccents(option.label).toLowerCase();
-        const value = removeAccents(option.value).toLowerCase();
-        const match = label.includes(filterValue) || value.includes(filterValue);
-        console.log('[CountrySelect-filter]', {
-          filterValue,
-          label,
-          value,
-          match
-        });
-        return match;
-      })
-    : options;
-
   return (
     <Combobox
       label="Country"
       placeholder="Select country"
-      // value={value} // Tạm thời bỏ prop value để kiểm tra UI
+      value={value || undefined}
       clearLabel="Clear"
       onClear={() => onChange({ target: { name, value: null } })}
       onChange={(v: string | undefined) => onChange({ target: { name, value: v ?? null } })}
-      // onSearch={setInputValue} // Đã revert về onInputChange
-      onInputChange={(e: any) => {
-        if (typeof e === 'string') {
-          setInputValue(e);
-          console.log('CountrySelect onInputChange (string):', e);
-        } else if (e && typeof e === 'object' && 'target' in e && typeof e.target.value === 'string') {
-          setInputValue(e.target.value);
-          console.log('CountrySelect onInputChange (event):', e.target.value, e);
-        } else {
-          setInputValue('');
-          console.log('CountrySelect onInputChange (unknown):', e);
-        }
-      }}
     >
-      {filteredOptions.map((o) => (
+      {options.map((o) => (
         <ComboboxOption key={o.value} value={o.value}>
           {o.label}
         </ComboboxOption>
