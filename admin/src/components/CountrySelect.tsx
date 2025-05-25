@@ -31,7 +31,7 @@ const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
   // Lọc các options dựa trên giá trị nhập vào
   // Helper: remove accents
   const removeAccents = (str: string) =>
-    str.normalize('NFD').replace(/\u0300-\u036f/g, '');
+    str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
   const safeInput = typeof inputValue === 'string' ? inputValue : '';
   const filterValue = removeAccents(safeInput).toLowerCase();
@@ -40,7 +40,14 @@ const CountrySelect: React.FC<Props> = ({ name, value, onChange }) => {
     ? options.filter(option => {
         const label = removeAccents(option.label).toLowerCase();
         const value = removeAccents(option.value).toLowerCase();
-        return label.includes(filterValue) || value.includes(filterValue);
+        const match = label.includes(filterValue) || value.includes(filterValue);
+        console.log('[CountrySelect-filter]', {
+          filterValue,
+          label,
+          value,
+          match
+        });
+        return match;
       })
     : options;
 
