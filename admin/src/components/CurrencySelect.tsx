@@ -4,7 +4,7 @@ import cc from 'currency-codes';
 
 const options = cc.data.map((c) => ({
   value: c.code,
-  label: c.code === 'VND' ? 'DONG VND' : `${c.currency} (${c.code})`, // Try with 'DONG VND' to check filter behavior
+  label: c.code === 'VND' ? 'Dong (VND)' : `${c.currency} (${c.code})`, // Revert to default label
 }));
 
 type Props = {
