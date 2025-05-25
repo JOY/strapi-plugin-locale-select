@@ -11,7 +11,7 @@ function countryFlag(code: string = '') {
 
 const options = Country.getAllCountries().map((c) => ({
   value: c.isoCode,
-  label: `${countryFlag(c.isoCode)} ${c.name} (${c.isoCode})`,
+  label: c.name, // chỉ tên quốc gia, không emoji, không mã
 }));
 
 type Props = {
